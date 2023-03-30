@@ -1,6 +1,7 @@
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
+from typing import Union
 
 # Esta clase hereda de BaseHTTPMiddleware, super() hace referencia a esta última
 class ErrorHandler(BaseHTTPMiddleware):
@@ -10,8 +11,9 @@ class ErrorHandler(BaseHTTPMiddleware):
 # Metodo que detecta si ocurre un error en nuestra aplicación
 # call_next hace referencia a la siguiente llamada, si no hay errores se ejecuta
 # Devuelve un Response en caso de que no ocurra un error y JsonResponse cuando hay error
-    async def dispatch(self, request: Request, call_next) -> Response | JSONResponse:
+    async def dispatch(self, request: Request, call_next) -> Union[Response, JSONResponse]:
         try:
             return await call_next(request)
         except Exception as e:
             return JSONResponse(status_code=500, content={'error': str(e)})
+        
