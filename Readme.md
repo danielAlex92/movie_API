@@ -69,3 +69,9 @@ git init --initial-branch=main
 ```
 
 git remote add origin https://github.com/danielAlex92/movie_API.git
+
+git add .
+
+git commit -m "Deploy1"
+
+git push -u origin main
