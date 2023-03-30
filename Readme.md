@@ -75,3 +75,15 @@ git add .
 git commit -m "Deploy1"
 
 git push -u origin main
+
+git remote
+git remote -v
+
+origin es simplemente el nombre predeterminado que recibe el repositorio remoto principal contra el que trabajamos. 
+
+git pull origin main (fatal: refusing to merge unrelated histories)
+
+git pull origin main --allow-unrelated-histories
+From https://github.com/danielAlex92/movie_API
+ * branch            main       -> FETCH_HEAD
+Merge made by the 'ort' strategy.
