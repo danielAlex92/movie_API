@@ -1,0 +1,9 @@
+__pycache__
+venv
+database.sqlite
+01_createDBTable.py
+02_querytable.py
+03_errorMiddleware.py
+04_routersCreation.py
+05_services.py
+06_schemas.py
