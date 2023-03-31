@@ -115,3 +115,26 @@ Merge made by the 'ort' strategy.
 ```sh
 git push origin main
 ```
+
+## Hosting: Railway
+
+1. Creo cuenta en la pagina de Railway y la vinculo con el repo en Github del proyecto
+2. Al dar deploy a la app dan multiples errores, por lo cual hacemos las siguientes modificaciones en el archivo main.py para que la aplicación corra automaticamente en el servidor remoto de Railway:
+```py
+import uvicorn, os
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0",
+                port=int(os.environ.get("PORT", 8000)))
+```
+3. Ademas hacemos la siguiente modificacion en el archivo error_handler ya que la sintaxis anterior no es aceptada por python 3.8 que es la version que maneja Railway
+```py
+Response| JSONResponse
+por:
+
+from typing import Union
+Union[Response, JSONResponse]:
+```
+4. Railway dice que el proyecto es montado con exito y por ultimo vamos a settings y le damos en crear dominio, nos genera el siguiente y ahi podemos ver nuestra app ya desplegada:
+
+https://movieapi-production-0354.up.railway.app/
